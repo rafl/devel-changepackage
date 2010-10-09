@@ -2,7 +2,7 @@ use strict;
 use warnings;
 
 package Devel::ChangePackage;
-# ABSTRACT: Change the package core is currently being compiled in
+# ABSTRACT: Change the package code is currently being compiled in
 
 use XSLoader;
 use Sub::Exporter -setup => {
