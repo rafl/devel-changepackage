@@ -4,8 +4,11 @@ use Test::More;
 
 use Devel::ChangePackage;
 
-BEGIN { change_package 'Foo::Bar' }
+BEGIN {
+    my $old_pkg = change_package 'Foo::Bar';
+    is $old_pkg, 'main', 'previous package returned';
+}
 
-::is __PACKAGE__, 'Foo::Bar';
+::is __PACKAGE__, 'Foo::Bar', 'package was changed';
 
 ::done_testing;
