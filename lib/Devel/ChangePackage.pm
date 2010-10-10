@@ -27,23 +27,28 @@ into. It's very similar to the C<package> statement, but allows you to use
 variables and therefore to generate the package name to be used in any way you
 want. Just like C<package>, this module only has compile-time effects.
 
-An important difference between this module and the C<package> statement is that
-the latter is lexically scoped, while the former is not. For example:
+Note that the effect of C<change_package> is B<NOT> lexically scoped the way
+that package is.  For example:
+
+    package Foo;
+
+    sub routine { } # this gets defined in package Foo
+
+    { package Bar; }
+
+    sub other { } # this gets defined in package Foo, also
+
+...but...
+
+    package Foo;
+
+    sub routine { } # this gets defined in package Foo
 
     {
-        package Foo;
-        # in package 'Foo'
-
-        {
-            package Bar;
-            # in package 'Bar'
-
-            BEGIN { Devel::ChangePackage::change_package('Affe') }
-            # in package 'Affe'
-        }
-
-        # back in the 'Foo' package
+        BEGIN { change_package('Affe') }
     }
+
+    sub other { } # this gets defined in package Bar!
 
 One way to think about this is changing the "argument" provided for the last
 C<package> statement, or, if there was none yet, changing the default namespace
