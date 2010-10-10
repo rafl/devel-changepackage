@@ -45,7 +45,7 @@ that package is.  For example:
     sub routine { } # this gets defined in package Foo
 
     {
-        BEGIN { change_package('Affe') }
+        BEGIN { change_package('Bar') }
     }
 
     sub other { } # this gets defined in package Bar!
