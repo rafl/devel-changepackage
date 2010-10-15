@@ -1,3 +1,7 @@
+0.07  Fri, 15 Oct 2010 20:54:24 +0200
+  * Declare dependency on a Test::More with done_testing.
+  * Add more tests.
+
 0.06  Sun, 10 Oct 2010 06:36:48 +0200
   * Fix a tiny documentation error introduced in 0.05. Thanks again, Karen!
 
